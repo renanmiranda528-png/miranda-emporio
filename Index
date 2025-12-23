@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="HandheldFriendly" content="true">
+  <title>Miranda Empório de Bebidas</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --yellow: #FFD700;
+      --yellow-dark: #FFC400;
+      --gray-dark: #1a1a1a;
+      --gray-medium: #333333;
+      --gray-light: #f5f5f5;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --ifood-red: #EA1D2C;
+      --jao-green: #2ECC71;
+      --christmas-red: #C41E3A;
+      --christmas-green: #1B5E20;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--gray-medium);
+      background-color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--black);
+    }
+    
+    /* Luzes de Natal */
+    .christmas-lights {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      overflow: hidden;
+      z-index: 1002;
+    }
+    
+    .light {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin: 0 8px;
+      animation: blink 1.5s infinite alternate;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    /* Banner Natalino */
+    .christmas-banner {
+      background: linear-gradient(90deg, var(--christmas-red), var(--christmas-green), var(--christmas-red));
+      color: white;
+      text-align: center;
+      padding: 12px 0;
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 999;
+      width: 100%;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 15px 20px;
+      box-shadow: 0 4px 12px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--christmas-red);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo h1 {
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+    
+    .logo span {
+      color: var(--yellow);
+    }
+    
+    .logo .christmas-hat {
+      color: var(--christmas-red);
+      font-size: 1.2rem;
+      margin-left: 5px;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    
+    nav a {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+      padding: 8px 0;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--yellow);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://i.ibb.co/mFBJZ7XL/Whats-App-Image-2025-12-23-at-11-33-09.jpg');
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      padding: 60px 20px;
+      text-align: center;
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero h2 {
+      font-size: 2.2rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px var(--shadow);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--yellow);
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .btn {
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 50px;
+      min-width: 140px;
+    }
+    
+    .btn-primary {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--yellow-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--yellow);
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(255, 215, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    /* Seções */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--yellow);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    /* Aplicativos */
+    .apps-container {
+      display: flex;
+      min-height: 500px;
+      flex-wrap: wrap;
+    }
+    
+    .app-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      text-decoration: none;
+      min-width: 300px;
+    }
+    
+    .app-ifood {
+      background-color: var(--white);
+      color: var(--gray-medium);
+      border-right: 1px solid #eee;
+    }
+    
+    .app-ifood:hover {
+      background-color: var(--ifood-red);
+      color: var(--white);
+    }
+    
+    .app-ifood:hover .app-icon {
+      color: var(--white);
+    }
+    
+    .app-ifood:hover .btn-app {
+      background-color: var(--white);
+      color: var(--ifood-red);
+    }
+    
+    .app-ifood .app-icon {
+      color: var(--ifood-red);
+    }
+    
+    .app-jao {
+      background-color: var(--white);
+      color: var(--gray-medium);
+      border-left: 1px solid #eee;
+    }
+    
+    .app-jao:hover {
+      background-color: var(--jao-green);
+      color: var(--white);
+    }
+    
+    .app-jao:hover .app-icon {
+      color: var(--white);
+    }
+    
+    .app-jao:hover .btn-app {
+      background-color: var(--white);
+      color: var(--jao-green);
+    }
+    
+    .app-jao .app-icon {
+      color: var(--jao-green);
+    }
+    
+    .app-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+    
+    .app-image {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .app-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .app-description {
+      font-size: 1rem;
+      max-width: 350px;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+    
+    .btn-app {
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      min-height: 50px;
+      min-width: 180px;
+    }
+    
+    .btn-ifood {
+      background-color: var(--ifood-red);
+      color: var(--white);
+    }
+    
+    .btn-jao {
+      background-color: var(--jao-green);
+      color: var(--white);
+    }
+    
+    /* Localização */
+    .localizacao {
+      background-color: var(--gray-light);
+    }
+    
+    .localizacao-container {
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+    }
+    
+    .localizacao-info {
+      flex: 1;
+    }
+    
+    .localizacao-mapa {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 3px solid var(--yellow);
+      min-height: 400px;
+    }
+    
+    .localizacao-mapa iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      min-height: 400px;
+    }
+    
+    .btn-mapa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 24px;
+      background-color: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s;
+      min-height: 50px;
+    }
+    
+    .btn-mapa:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+    
+    .horarios {
+      margin-top: 30px;
+      background-color: var(--black);
+      color: var(--white);
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 4px solid var(--christmas-red);
+    }
+    
+    .horarios h4 {
+      color: var(--yellow);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .horarios ul {
+      list-style: none;
+    }
+    
+    .horarios li {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Sobre */
+    .sobre {
+      background-color: var(--black);
+      color: var(--white);
+    }
+    
+    .sobre h2 {
+      color: var(--white);
+    }
+    
+    .sobre-content {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .sobre-texto {
+      flex: 1;
+    }
+    
+    .sobre-texto h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--yellow);
+    }
+    
+    .sobre-texto p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+    
+    .sobre-imagem {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 3px solid var(--yellow);
+    }
+    
+    /* Contato */
+    .contato-container {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .contato-info {
+      flex: 1;
+      background-color: var(--black);
+      color: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      border: 2px solid var(--yellow);
+    }
+    
+    .contato-info h3 {
+      color: var(--yellow);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .contato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .contato-icon {
+      font-size: 1.5rem;
+      color: var(--yellow);
+      margin-top: 3px;
+    }
+    
+    .contato-form {
+      flex: 1;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid var(--gray-medium);
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 50px 20px 20px;
+      text-align: center;
+      border-top: 3px solid var(--yellow);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+    
+    .footer-col h3 {
+      color: var(--yellow);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background-color: var(--gray-medium);
+      border-radius: 50%;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-medium);
+      color: var(--gray-light);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsivo */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--black);
+        flex-direction: column;
+        padding: 20px;
+        border-top: 2px solid var(--yellow);
+      }
+      
+      nav ul.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .apps-container {
+        flex-direction: column;
+      }
+      
+      .app-card {
+        border: none;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .localizacao-container, .sobre-content, .contato-container {
+        flex-direction: column;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .footer-col {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Luzes Natalinas -->
+  <div class="christmas-lights" id="christmasLights"></div>
+  
+  <div class="christmas-banner">
+    <span>🎄 Feliz Natal e Próspero Ano Novo! 🎅 Peça suas bebidas para as festas! 🎁</span>
+  </div>
+  
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1>Miranda Empório <span>de Bebidas</span> <span class="christmas-hat">🎅</span></h1>
+      </div>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#apps">Pedir Online</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div>
+      <h2>Miranda Empório de Bebidas</h2>
+      <p>As melhores bebidas para suas festas de fim de ano! 🎄 Qualidade e tradição em cada garrafa.</p>
+      
+      <div class="hero-buttons">
+        <a href="#apps" class="btn btn-primary">Pedir Agora</a>
+        <a href="https://wa.me/5516994509382" target="_blank" class="btn btn-secondary">
+          <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aplicativos -->
+  <section id="apps">
+    <div class="section-title">
+      <h2>Peça Online</h2>
+      <p>Escolha seu aplicativo favorito para fazer seu pedido</p>
+    </div>
+    
+    <div class="apps-container">
+      <a href="https://www.ifood.com.br/delivery/ribeirao-preto-sp/miranda-emporio-de-bebidas-parque-dos-lagos/b8d389eb-7a7c-4483-b646-1afbc623f437?UTM_Medium=share" 
+         target="_blank" 
+         class="app-card app-ifood"
+         id="ifoodCard">
+        <div class="app-icon">
+          <i class="fas fa-utensils"></i>
+        </div>
+        
+        <img src="https://i.ibb.co/XkDgHn1C/Whats-App-Image-2025-12-23-at-13-38-31.jpg" 
+             alt="iFood - Miranda Empório" 
+             class="app-image">
+        
+        <h3 class="app-title">iFood</h3>
+        
+        <p class="app-description">
+          Peça pelo iFood e receba suas bebidas favoritas em casa com toda praticidade e segurança.
+        </p>
+        
+        <button class="btn-app btn-ifood">Pedir no iFood</button>
+      </a>
+      
+      <a href="https://www.jao.delivery/" 
+         target="_blank" 
+         class="app-card app-jao"
+         id="jaoCard">
+        <div class="app-icon">
+          <i class="fas fa-motorcycle"></i>
+        </div>
+        
+        <img src="https://i.ibb.co/d038D7nD/Whats-App-Image-2025-12-23-at-13-39-14.jpg" 
+             alt="Jão Delivery - Miranda Empório" 
+             class="app-image">
+        
+        <h3 class="app-title">Jão Delivery</h3>
+        
+        <p class="app-description">
+          Peça pelo Jão Delivery e aproveite promoções exclusivas com entrega rápida na sua região.
+        </p>
+        
+        <button class="btn-app btn-jao">Pedir no Jão Delivery</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Localização -->
+  <section class="localizacao" id="localizacao">
+    <div class="section-title">
+      <h2>Nossa Localização</h2>
+      <p>Venha nos visitar ou peça delivery</p>
+    </div>
+    
+    <div class="localizacao-container">
+      <div class="localizacao-info">
+        <h3>Endereço</h3>
+        <div class="contato-item">
+          <div class="contato-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <p style="font-size: 1.1rem; font-weight: 500;">Av. Henri Nestlé, 1750 - Parque dos Lagos, Ribeirão Preto - SP, 14097-140</p>
+          </div>
+        </div>
+        
+        <div class="contato-item">
+          <div class="contato-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div>
+            <h4>Telefone</h4>
+            <p>(16) 99450-9382</p>
+          </div>
+        </div>
+        
+        <div class="horarios">
+          <h4><i class="fas fa-clock"></i> Horário de Funcionamento</h4>
+          <ul>
+            <li><span>Terça a Quinta:</span> <span>10h às 22h</span></li>
+            <li><span>Sexta e Sábado:</span> <span>10h às 00h</span></li>
+            <li><span>Domingo:</span> <span>10h às 20h</span></li>
+          </ul>
+        </div>
+        
+        <a href="https://maps.app.goo.gl/WdAfzZLx6ZRFvH1g7" target="_blank" class="btn-mapa">
+          <i class="fas fa-map-marked-alt"></i> Abrir no Google Maps
+        </a>
+      </div>
+      
+      <div class="localizacao-mapa">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.982179593968!2d-47.85472292427039!3d-21.160468080430886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9bf6d61f5c8e1%3A0x8d2a3d7e8d3c3e3d!2sAv.%20Henri%20Nestl%C3%A9%2C%201750%20-%20Parque%20dos%20Lagos%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014097-140!5e0!3m2!1spt-BR!2sbr!4v1703345678900!5m2!1spt-BR!2sbr" 
+          title="Localização da Miranda Empório de Bebidas"
+          allowfullscreen 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="sobre" id="sobre">
+    <div class="section-title">
+      <h2>Sobre Nós</h2>
+    </div>
+    
+    <div class="sobre-content">
+      <div class="sobre-texto">
+        <h3>Nossa História</h3>
+        <p>Com grande alegria e entusiasmo, inauguramos as portas da Miranda Empório de Bebidas no dia <strong>25 de abril de 2025</strong>. Nascida do sonho de criar um espaço acolhedor onde os apreciadores de boa bebida pudessem encontrar não apenas produtos de qualidade, mas também aconselhamento especializado e um atendimento personalizado.</p>
+        
+        <p>Nosso nome, Miranda Empório de Bebidas, carrega a tradição familiar e o compromisso com a excelência. Escolhemos o Parque dos Lagos em Ribeirão Preto para estabelecer nossa casa, um bairro vibrante e cheio de vida, que representa perfeitamente nosso espírito jovem e contemporâneo.</p>
+        
+        <p>Em pouco tempo, já nos tornamos referência na região, oferecendo uma seleção cuidadosamente curada dos melhores vinhos, destilados, cervejas artesanais e bebidas não alcoólicas. Acreditamos que cada ocasião merece a bebida perfeita, e é por isso que nossa equipe está sempre pronta para ajudar você a fazer a escolha ideal.</p>
+        
+        <div style="margin-top: 2rem;">
+          <a href="#apps" class="btn btn-primary">Ver Aplicativos</a>
+          <a href="https://wa.me/5516994509382" target="_blank" class="btn btn-secondary" style="margin-left: 1rem;">
+            <i class="fab fa-whatsapp"></i> Falar Conosco
+          </a>
+        </div>
+      </div>
+      
+      <div class="sobre-imagem">
+        <img src="https://i.ibb.co/mFBJZ7XL/Whats-App-Image-2025-12-23-at-11-33-09.jpg" alt="Miranda Empório de Bebidas">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="section-title">
+      <h2>Entre em Contato</h2>
+      <p>Estamos à disposição para atender você</p>
+    </div>
+    
+    <div class="contato-container">
+      <div class="contato-info">
+        <h3>Informações de Contato</h3>
+        
+        <div class="contato-item">
+          <div class="contato-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h4>Endereço</h4>
+            <p>Av. Henri Nestlé, 1750 - Parque dos Lagos, Ribeirão Preto - SP, 14097-140</p>
+          </div>
+        </div>
+        
+        <div class="contato-item">
+          <div class="contato-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div>
+            <h4>Telefone</h4>
+            <p>(16) 99450-9382</p>
+          </div>
+        </div>
+        
+        <div class="contato-item">
+          <div class="contato-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h4>E-mail</h4>
+            <p>contato@mirandaemporio.com.br</p>
+          </div>
+        </div>
+        
+        <div class="contato-item">
+          <div class="contato-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h4>Horário de Funcionamento</h4>
+            <p>Terça a Quinta: 10h às 22h<br>Sexta e Sábado: 10h às 00h<br>Domingo: 10h às 20h</p>
+          </div>
+        </div>
+        
+        <div class="social-icons" style="margin-top: 2rem;">
+          <a href="https://www.instagram.com/emporiomiranda016?igsh=ZXFzYWY5MzN0ZDBl" target="_blank" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/5516994509382" target="_blank" class="social-icon">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://maps.app.goo.gl/WdAfzZLx6ZRFvH1g7" target="_blank" class="social-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="contato-form">
+        <h3>Envie sua Mensagem</h3>
+        <form id="formContato">
+          <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" class="form-control" rows="5" required placeholder="Como podemos ajudar você?"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+          </button>
+        </form>
+        
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <p>Ou entre em contato diretamente:</p>
+          <a href="https://wa.me/5516994509382" target="_blank" class="btn" style="background-color: #25D366; color: white; margin-top: 0.5rem; width: 100%;">
+            <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>Miranda Empório de Bebidas</h3>
+        <p>Inaugurada em 25 de abril de 2025, já nos tornamos referência em bebidas de qualidade no Parque dos Lagos, Ribeirão Preto.</p>
+        
+        <div class="social-icons">
+          <a href="https://www.instagram.com/emporiomiranda016?igsh=ZXFzYWY5MzN0ZDBl" target="_blank" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/5516994509382" target="_blank" class="social-icon">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.ifood.com.br/delivery/ribeirao-preto-sp/miranda-emporio-de-bebidas-parque-dos-lagos/b8d389eb-7a7c-4483-b646-1afbc623f437?UTM_Medium=share" target="_blank" class="social-icon">
+            <i class="fas fa-utensils"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Links Rápidos</h3>
+        <ul class="footer-links">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#apps">Pedir Online</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Aplicativos</h3>
+        <ul class="footer-links">
+          <li><a href="https://www.ifood.com.br/delivery/ribeirao-preto-sp/miranda-emporio-de-bebidas-parque-dos-lagos/b8d389eb-7a7c-4483-b646-1afbc623f437?UTM_Medium=share" target="_blank">iFood</a></li>
+          <li><a href="https://www.jao.delivery/" target="_blank">Jão Delivery</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Miranda Empório de Bebidas. Todos os direitos reservados.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">🎄 Feliz Natal e Próspero Ano Novo! 🎅</p>
+    </div>
+  </footer>
+
+  <script>
+    // Luzes de Natal
+    const lightsContainer = document.getElementById('christmasLights');
+    for (let i = 0; i < 50; i++) {
+      const light = document.createElement('div');
+      light.classList.add('light');
+      lightsContainer.appendChild(light);
+    }
+    
+    // Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (mobileMenuBtn && navMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+      
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function() {
+          navMenu.classList.remove('active');
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+    }
+    
+    // Efeitos Cards
+    const ifoodCard = document.getElementById('ifoodCard');
+    const jaoCard = document.getElementById('jaoCard');
+    
+    if (ifoodCard) {
+      ifoodCard.addEventListener('mouseenter', function() {
+        this.style.backgroundColor = 'var(--ifood-red)';
+        this.style.color = 'var(--white)';
+        this.querySelector('.app-icon').style.color = 'var(--white)';
+        this.querySelector('.btn-app').style.backgroundColor = 'var(--white)';
+        this.querySelector('.btn-app').style.color = 'var(--ifood-red)';
+      });
+      
+      ifoodCard.addEventListener('mouseleave', function() {
+        this.style.backgroundColor = '';
+        this.style.color = '';
+        this.querySelector('.app-icon').style.color = '';
+        this.querySelector('.btn-app').style.backgroundColor = '';
+        this.querySelector('.btn-app').style.color = '';
+      });
+    }
+    
+    if (jaoCard) {
+      jaoCard.addEventListener('mouseenter', function() {
+        this.style.backgroundColor = 'var(--jao-green)';
+        this.style.color = 'var(--white)';
+        this.querySelector('.app-icon').style.color = 'var(--white)';
+        this.querySelector('.btn-app').style.backgroundColor = 'var(--white)';
+        this.querySelector('.btn-app').style.color = 'var(--jao-green)';
+      });
+      
+      jaoCard.addEventListener('mouseleave', function() {
+        this.style.backgroundColor = '';
+        this.style.color = '';
+        this.querySelector('.app-icon').style.color = '';
+        this.querySelector('.btn-app').style.backgroundColor = '';
+        this.querySelector('.btn-app').style.color = '';
+      });
+    }
+    
+    // Formulário
+    const form = document.getElementById('formContato');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+        const mensagem = document.getElementById('mensagem').value.trim();
+        
+        if (!nome || !email || !telefone || !mensagem) {
+          alert('Por favor, preencha todos os campos.');
+          return;
+        }
+        
+        const msgWhatsApp = `Olá! Meu nome é ${nome}.\n\nMensagem: ${mensagem}\n\nE-mail: ${email}\nTelefone: ${telefone}`;
+        const urlWhatsApp = `https://wa.me/5516994509382?text=${encodeURIComponent(msgWhatsApp)}`;
+        
+        window.open(urlWhatsApp, '_blank');
+        form.reset();
+        alert(`Obrigado, ${nome}! Redirecionando para o WhatsApp...`);
+      });
+    }
+    
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = targetPosition - headerHeight - 20;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
